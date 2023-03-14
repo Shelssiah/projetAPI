@@ -22,11 +22,11 @@
       <div>
         <label for="note">Note:</label>
         <select id="note" name="note">
-          <option value="1">1/5</option>
-          <option value="2">2/5</option>
-          <option value="3">3/5</option>
-          <option value="4">4/5</option>
-          <option value="5">5/5</option>
+          <option value="1">1 étoile</option>
+          <option value="2">2 étoiles </option>
+          <option value="3">3 étoiles</option>
+          <option value="4">4 étoiles</option>
+          <option value="5">5 étoiles</option>
         </select>
       </div>
       <button type="submit">Envoyer</button>
@@ -56,7 +56,66 @@
 
     </script>
 
+    <br/>
 
+    <h1> Accéder à une annotation </h1>
+    <form id="uneAnnot">
+     <div> 
+        <label for="Annot"> Annotation : </label>
+        <input type="text" name="Annot" id="idAnnot"/>
+     </div>
+     <div>
+        <label for="formatidAnnot"> Format à chosir </label>
+        <select name="formatidAnnot" id="formatidAnnot">
+            <option value="html">html</option>
+            <option value="json">json</option>
+        </select>
+     </div>
+     <div>
+        <button type= "button">Envoi...</button>
+
+     </div>
+    </form>
+
+     <br/>
+
+     <h1> Accéder à toutes les annotations </h1>
+     <form id="allAnnot">
+   
+     <div>
+        <label for="formatAllAnnot"> Format à chosir </label>
+        <select name="formatAllAnnot" id="formatAllAnnot">
+            <option value="html">html</option>
+            <option value="json">json</option>
+        </select>
+     </div>
+     <div>
+        <button type= "button">Envoi...</button>
+
+     </div>
+    </form>
+
+     <br/>
+
+     <h1> Accéder aux annotations d'une URL '</h1>
+     <form id="acces">
+
+     <div> 
+        <label for="AnnotURL"> URL : </label>
+        <input type="text" name="AnnotURL" id="AnnotURL"/>
+     </div>
+     <div>
+        <label for="formatAnnotURL"> Format à chosir </label>
+        <select name="formatAnnotURL" id="formatAnnotURL">
+            <option value="html">html</option>
+            <option value="json">json</option>
+        </select>
+     </div>
+     <div>
+        <button type= "button">Voir</button>
+
+     </div>
+    </form>
 
 
 </body>
