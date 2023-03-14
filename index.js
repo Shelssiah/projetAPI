@@ -3,7 +3,10 @@ var app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get("/toto",function(req, res){
+const bodyParser = require('body-parser');
+
+app.post("/toto",function(req, res){
+
 	res.send("Bonjour Toto");
 });
 
