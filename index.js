@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(bodyParser.json());
 
+// html dossier client
+app.use(express.static('client'));
+
 // verification
 app.get('/', (request, response) => {
     // The string we want to display on http://localhost:3000
