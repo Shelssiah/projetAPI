@@ -5,10 +5,16 @@ const bodyParser = require('body-parser');
 // port
 const PORT = process.env.PORT || 3000;
 
-
 // appels
 const app = express();
 app.use(bodyParser.json());
+
+// verification
+app.get('/', (request, response) => {
+    // The string we want to display on http://localhost:3000
+    response.send('Welcome on the annotations API! Hello Wold ! ');
+});
+
 
 // root
 app.post('/annotation', (req, res) => {
