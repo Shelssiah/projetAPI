@@ -32,7 +32,7 @@ app.post('/annotation', (req, res) => {
 
   // fichier existant
 
-  const data= fs.raedFileSync('annot.json','utf8');
+  const data= fs.readFileSync('annot.json','utf8');
   const val= JSON.parse(data);
 
   // ajout nouv créé
