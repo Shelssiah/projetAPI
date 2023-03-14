@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var app = express();
 
 const port = 3000;
@@ -12,4 +12,20 @@ app.get("/toto",function(req, res){
 
 app.listen(port, function(){
 	console.log('serveur listening on port: '+port);
+});
+*/
+
+const express = require('express');
+const app = express();
+
+// This variable defines the port of your computer where the API will be available
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (request, response) => {
+    // The string we want to display on http://localhost:3000
+    response.send('Welcome on the annotations API! Hello Wold ! ');
+});
+
+app.listen(PORT, () =>{
+  console.log(`The Annotations API is running on: http://localhost:${PORT}.`);
 });
