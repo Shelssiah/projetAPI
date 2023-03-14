@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
-app.post("/toto",function(req, res){
+app.get("/toto",function(req, res){
 
 	res.send("Bonjour Toto");
 });
