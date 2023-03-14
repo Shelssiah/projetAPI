@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Actions client</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -12,7 +13,7 @@
     <form id="client">
       <div>
         <label for="url">URL:</label>
-        <input type="url" id="url" name="url" required>
+        <input type="url" id="url" name="url" required pattern="https?://.+" title="L'URL doit commencer par http:// ou https://">
       </div>
       <div>
         <label for="comment">Commentaire:</label>
@@ -32,12 +33,15 @@
     </form>
 
     <script>
+
       const form = document.getElementById('client');
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
 
+
         const formData = new FormData(form);
+        //const fs = require('fs');
 
         fetch('/annotation', {
           method: 'POST',
@@ -48,7 +52,11 @@
         .then(data => console.log(data))
         .catch(error => console.error(error));
       });
+
+
     </script>
+
+
 
 
 </body>

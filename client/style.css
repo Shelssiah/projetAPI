@@ -1,0 +1,44 @@
+﻿form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+textarea {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+  padding: 0.5rem;
+  background-color: #008CBA;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #006f8e;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 1px solid #008CBA;
+  box-shadow: 0 0 5px #008CBA;
+}
