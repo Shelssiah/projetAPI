@@ -18,7 +18,7 @@ app.use(express.static('client'));
 // verification
 app.get('/', (request, response) => {
     response.send('API node.js ');
-   // response.redirect('https://www.example.com');
+    response.redirect('https://projet-z27d.onrender.com/formulaire.html');
 });
 
 // fonction pour avoir un fichier json contenat les annotations
