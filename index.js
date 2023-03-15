@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(express.static('client'));
 
 // verification
-app.get('/', (request, response) => {
+app.get('/annotation', (request, response) => {
     response.send('Welcome on the annotations API! Hello Wold ! ');
 });
 
