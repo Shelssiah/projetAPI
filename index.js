@@ -53,28 +53,67 @@ app.post('/annotation', (req, res) => {
   //enregistrement
   
 
-  //res.json(annotation);
-  res.send("Annotation crée");
+ // res.json(annotations);
+  res.send("Annotation cree");
+});
+
+app.get('/annotation', (req, res) => {
+   // res.send("hello");
+   const data = fs.readFileSync('annotations.json');
+   const annotations = JSON.parse(data);
+
+   res.send(annotations);
+
+});
+
+// récup id annotation
+app.get('/annotation/:id', (req, res) => {
+
+  const data = fs.readFileSync('annotations.json');
+  const annotations = JSON.parse(data);
+  
+  const id = parseInt(req.params.id);
+
+  const annotation = annotations.find(a => a.id === id);
+
+      if (annotation)
+        {
+            const format = req.query.format;
+
+            if (format === 'json') {
+                res.json(annotation);
+            } else {
+                const html = '<p> Commentaire : ${annotation.comment} </p> <p> Note: ${annotation.note}</p> ';
+                res.send(html);
+            }
+         } else 
+         {
+        res.send("Annotation non trouvée");
+         }  
+
+
 });
 
 
-// récup Annotations
+// récup Annotations  /:url
 app.get('/annotation/:url', (req, res) => {
+
 
     const url = req.params.url;
 
     try {
         const data = fs.readFileSync('annotations.json');
-        const annotations= JSON.parse(data);
+        const annotations = JSON.parse(data);     
 
-        const annotation = annotations.find((a) => a.url === url);
+        const annotation = annotations.find(a => a.url === url);
+       // console.log(annotation);
 
         if (annotation)
         {
             const format = req.query.format;
 
             if (format === 'json') {
-                res.json(annotation);
+                res.send(annotation);
             } else {
                 const html = '<p> Commentaire : ${annotation.comment} </p> <p> Note: ${annotation.note}</p> ';
                 res.send(html);
@@ -90,6 +129,13 @@ app.get('/annotation/:url', (req, res) => {
        
     }
 });
+
+// toutes les annotations
+app.get('/annotation', (req, res) => {
+   res.send("annotations:"); 
+
+});
+
 
 
 // serveur

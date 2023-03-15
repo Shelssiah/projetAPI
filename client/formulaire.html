@@ -63,7 +63,7 @@
     <form id="uneAnnot">
      <div> 
         <label for="Annot"> Annotation : </label>
-        <input type="text" name="Annot" id="idAnnot"/>
+        <input type="text" name="idAnnot" id="idAnnot"/>
      </div>
      <div>
         <label for="formatidAnnot"> Format à chosir </label>
@@ -85,22 +85,21 @@
         const url = document.getElementById('idAnnot').value;
         const format = document.getElementById('formatidAnnot').value;
 
-        fetch('/annotation') // /${url}?format=${format}
-          .then((response) => {
+        fetch('/annotation/${url}')  
+          .then( response => {
             if (!response.ok) {
               throw new Error('Erreur réseau');
             }
             return response.text();
           })
-          .then((data) => {
-            document.getElementById('resultat').innerHTML = data;
+          .then(annotation=> {
+            document.getElementById('resultat').innerHTML = annotation;
           })
           .catch((err) => {
             console.log(err);
             document.getElementById('resultat').innerHTML = '<p>Erreur : l\'annotation demandée est introuvable</p>';
           });
       }
-
 
     </script>
 
@@ -119,15 +118,43 @@
         </select>
      </div>
      <div>
-        <button type= "button">Envoi...</button>
+        <button type= "button" onClick="AllAnnotation()">Envoi...</button>
 
      </div>
     </form>
+     <div id="tout"></div>
+
+    <script>
+
+     function AllAnnotation() {
+   
+        const format = document.getElementById('formatidAnnot').value;
+
+        fetch('/annotation')  
+          .then( response => {
+            if (!response.ok) {
+              throw new Error('Erreur réseau');
+            }
+            return response.text();
+          })
+          .then(annotation=> {
+            document.getElementById('tout').innerHTML = annotation;
+          })
+          .catch((err) => {
+            console.log(err);
+            document.getElementById('tout').innerHTML = '<p>Erreur : l\'annotation demandée est introuvable</p>';
+          });
+      }
+
+    </script>
+
+
+
 
      <br/>
 
      <h1> Accéder aux annotations d'une URL</h1>
-     <form id="acces">
+     <form>
 
      <div> 
         <label for="AnnotURL"> URL : </label>
@@ -145,6 +172,7 @@
 
      </div>
     </form>
+   
 
 
 </body>
