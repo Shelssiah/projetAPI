@@ -17,7 +17,7 @@ app.use(express.static('client'));
 
 // verification
 app.get('/', (request, response) => {
-    response.send('API node.js ');
+   // response.send('API node.js ');
     response.redirect('https://projet-z27d.onrender.com/formulaire.html');
 });
 
