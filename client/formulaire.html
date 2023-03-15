@@ -30,29 +30,29 @@
           <option value="5">5 étoiles</option>
         </select>
       </div>
-      <button type="submit">Envoyer</button>
+      <button type="button" onClick="envoyer()">Envoyer</button>
     </form>
 
     <script>
 
-      const form = document.getElementById('client');
+    function envoyer() {
+        const url = document.getElementById("url").value;
+        const comment = document.getElementById("comment").value;
+        const note = document.getElementById("note").value;
 
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-
-        const formData = new FormData(form);
-        //const fs = require('fs');
+        const data= {url, comment, note};
 
         fetch('/annotation', {
-          method: 'POST',
-          body: JSON.stringify(Object.fromEntries(formData.entries())),
-          headers: { 'Content-Type': 'application/json' }
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(annotation => console.log(annotation))
         .catch(error => console.error(error));
-      });
+    }
 
 
     </script>
@@ -73,7 +73,7 @@
         </select>
      </div>
      <div>
-        <button type= "submit">Envoi...</button>
+        <button type= "button">Envoi...</button>
 
      </div>
     </form>
@@ -91,7 +91,7 @@
         </select>
      </div>
      <div>
-        <button type= "submit">Envoi...</button>
+        <button type= "button">Envoi...</button>
 
      </div>
     </form>
@@ -113,7 +113,7 @@
         </select>
      </div>
      <div>
-        <button type= "submit">Voir</button>
+        <button type= "button">Voir</button>
 
      </div>
     </form>
@@ -121,3 +121,25 @@
 
 </body>
 </html>
+
+
+
+<!-- const form = document.getElementById('client');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+
+        const formData = new FormData(form);
+        //const fs = require('fs');
+
+        fetch('/annotation', {
+          method: 'POST',
+          body: JSON.stringify(Object.fromEntries(formData.entries())),
+          headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+      });
+-->

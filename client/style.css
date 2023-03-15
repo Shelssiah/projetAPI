@@ -23,7 +23,7 @@ select {
   margin-bottom: 1rem;
 }
 
-button[type="submit"] {
+button[type="button"] {
   padding: 0.5rem;
   background-color: #008CBA;
   color: #fff;
