@@ -59,9 +59,33 @@ app.post('/annotation', (req, res) => {
 
 
 // récup Annotations
-app.get('/annotation', (req, res) => {
-    const annotations = getAnnotations();
-    res.json(annotations);
+app.get('/annotation/:url', (req, res) => {
+
+    const url = req.params.url;
+
+    try {
+        const data = fs.readFileSync('annotations.json');
+        const annotation = annotations.find((a) => a.url === url);
+
+        if (annotation)
+        {
+            const format = req.query.format;
+
+            if (format === 'json') {
+                res.json(annotation);
+            } else {
+                const html = `<p> Commentaire : ${annotation.comment} </p> <p> Note: ${annotation.note}</p> `;
+                res.send(html);
+            }
+}
+    } else {
+        res.send("Annotation non trouvée");
+    }
+
+    catch (err) {
+        console.log(err);
+       
+    }
 });
 
 

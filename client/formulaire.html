@@ -73,10 +73,38 @@
         </select>
      </div>
      <div>
-        <button type= "button">Envoi...</button>
+        <button type= "button" onClick="getAnnotation()" >Voir</button>
 
      </div>
     </form>
+    <div id="resultat"></div>
+
+    <script>
+    
+    function getAnnotation() {
+        const url = document.getElementById('idAnnot').value;
+        const format = document.getElementById('formatidAnnot').value;
+
+        fetch(`/annotation/${url}?format=${format}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Erreur réseau');
+            }
+            return response.text();
+          })
+          .then((data) => {
+            document.getElementById('resultat').innerHTML = data;
+          })
+          .catch((err) => {
+            console.log(err);
+            document.getElementById('resultat').innerHTML = '<p>Erreur : l\'annotation demandée est introuvable</p>';
+          });
+      }
+
+
+    </script>
+
+
 
      <br/>
 
