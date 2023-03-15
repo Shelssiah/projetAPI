@@ -79,9 +79,10 @@ app.get('/annotation/:url', (req, res) => {
                 const html = '<p> Commentaire : ${annotation.comment} </p> <p> Note: ${annotation.note}</p> ';
                 res.send(html);
             }
-}
-    } else {
+         } else 
+         {
         res.send("Annotation non trouvée");
+         }  
     }
 
     catch (err) {
