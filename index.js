@@ -74,7 +74,7 @@ app.get('/annotation/:url', (req, res) => {
             if (format === 'json') {
                 res.json(annotation);
             } else {
-                const html = `<p> Commentaire : ${annotation.comment} </p> <p> Note: ${annotation.note}</p> `;
+                const html = '<p> Commentaire : ${annotation.comment} </p> <p> Note: ${annotation.note}</p> ';
                 res.send(html);
             }
 }

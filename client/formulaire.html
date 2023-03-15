@@ -85,7 +85,7 @@
         const url = document.getElementById('idAnnot').value;
         const format = document.getElementById('formatidAnnot').value;
 
-        fetch(`/annotation/${url}?format=${format}`)
+        fetch('/annotation') // /${url}?format=${format}
           .then((response) => {
             if (!response.ok) {
               throw new Error('Erreur réseau');
