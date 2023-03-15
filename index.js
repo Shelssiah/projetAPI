@@ -6,6 +6,8 @@ const fs= require('fs'); // pour gérer création du fichier json
 // port
 const PORT = process.env.PORT || 3000;
 
+let const= 0;
+
 // appels
 const app = express();
 app.use(bodyParser.json());
@@ -25,30 +27,43 @@ function getAnnotations() {
     return annotations;
 }
 
+// root
+app.post('/annotation', (req, res) => {
+
+  //const annotations = getAnnotations();
+  const annotation = {
+    id: const++,
+    url: req.body.url,
+    comment: req.body.comment,
+    note: req.body.note
+  };
+
+  try {
+      const data = fs.readFileSync('annotations.json');
+      let annotations = JSON.parse(data);
+      annotations.push(annotation);
+      fs.writeFileSync('annotations.json', JSON.stringify(annotations));
+  } catch (err) {
+      const annotations = [annotation];
+      fs.writeFileSync('annotations.json', JSON.stringify(annotations));
+  }
+
+ // annotations.push(annotation);
+
+  //enregistrement
+  
+
+  //res.json(annotation);
+  res.send("Annotation crée");
+});
+
+
 // récup Annotations
 app.get('/annotation', (req, res) => {
     const annotations = getAnnotations();
     res.json(annotations);
 });
 
-// root
-app.post('/annotation', jsonParser, (req, res) => {
-
-  const annotations = getAnnotations();
-  const annotation = {
-    id: annotations.length+1,
-    url: req.body.url,
-    comment: req.body.comment,
-    note: req.body.note
-  };
-
-  annotations.push(annotation);
-
-  //enregistrement
-  fs.writeFileSync('annotations.json', JSON.stringify(annotations));
-
-  res.json(annotation);
-});
 
 // serveur
 app.listen(PORT, () =>{
