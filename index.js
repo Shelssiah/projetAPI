@@ -65,6 +65,8 @@ app.get('/annotation/:url', (req, res) => {
 
     try {
         const data = fs.readFileSync('annotations.json');
+        const annotations= JSON.parse(data);
+
         const annotation = annotations.find((a) => a.url === url);
 
         if (annotation)
