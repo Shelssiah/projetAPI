@@ -16,8 +16,9 @@ app.use(bodyParser.json());
 app.use(express.static('client'));
 
 // verification
-app.get('/annotation', (request, response) => {
-    response.send('Welcome on the annotations API! Hello Wold ! ');
+app.get('/', (request, response) => {
+    response.send('API node.js ');
+   // response.redirect('https://www.example.com');
 });
 
 // fonction pour avoir un fichier json contenat les annotations
