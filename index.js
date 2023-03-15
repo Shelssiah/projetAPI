@@ -6,7 +6,7 @@ const fs= require('fs'); // pour gérer création du fichier json
 // port
 const PORT = process.env.PORT || 3000;
 
-let const= 0;
+let val= 0;
 
 // appels
 const app = express();
@@ -32,7 +32,7 @@ app.post('/annotation', (req, res) => {
 
   //const annotations = getAnnotations();
   const annotation = {
-    id: const++,
+    id: val++,
     url: req.body.url,
     comment: req.body.comment,
     note: req.body.note
